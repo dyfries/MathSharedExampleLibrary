@@ -18,6 +18,7 @@ public class FakedPhysicsExample : MonoBehaviour
     void Update()
     {
         input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        
         currentAcceleration = input * accelerationRate;
         // Cap it at max
         // find lesser of max and current acceleration magnitude (directionless speed)

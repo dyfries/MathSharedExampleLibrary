@@ -46,6 +46,10 @@ public class LerpOverTimeExample : MonoBehaviour
                 StartCoroutine(ResetTimer());
             } else {
                 float proportionFinished = currentTimer / lerpTime;
+
+                // Insert a curve 
+                // different response curve here .
+
                 // iterate through
                 transform.position = Vector3.Lerp(startPosition, endPosition, proportionFinished);
             
