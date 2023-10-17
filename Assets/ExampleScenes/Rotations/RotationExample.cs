@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Create by Sean Piche and Derek Baert 10/17/2023
+/// </summary>
 public enum RotationModeExample { RotateTowardsTarget, SnapToAngle, QuaternionMultiplication, QuaternionSetLookRotation, QuaternionSetFromToRotation }
 public class RotationExample : MonoBehaviour
 {
@@ -33,11 +36,11 @@ public class RotationExample : MonoBehaviour
         }
         else if (rotationMode == RotationModeExample.SnapToAngle)
         {
-
+            SnapToRotation();
         }
         else if (rotationMode == RotationModeExample.QuaternionMultiplication)
         {
-
+            QuaternionMultiplication();
         }
         else if (rotationMode == RotationModeExample.QuaternionSetLookRotation) 
         {
@@ -63,5 +66,15 @@ public class RotationExample : MonoBehaviour
                 timeFromStart = 0;
             }
         }
+    }
+
+    private void SnapToRotation()
+    {
+        this.transform.rotation = Quaternion.Euler(targetRotation);
+    }
+
+    private void QuaternionMultiplication()
+    {
+        this.transform.rotation *= Quaternion.Euler(targetRotation);
     }
 }
