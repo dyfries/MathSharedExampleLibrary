@@ -397,12 +397,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1504176851}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.57, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1991245797}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1991245794
 GameObject:
@@ -485,11 +485,12 @@ Transform:
   m_GameObject: {fileID: 1991245794}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.24, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 44723550}
+  - {fileID: 1504176854}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1991245798
@@ -505,16 +506,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input: {x: 0, y: 0}
-  accelerationRate: 1
-  currentVelocity: {x: 0, y: 0}
+  accelerationRate: 40
+  currentVelocity: {x: 0.03123558, y: 0}
   currentAcceleration: {x: 0, y: 0}
-  maxAcceleration: 1
-  maxVelocity: 10
+  maxAcceleration: 100
+  maxVelocity: 50
   maxDrag: 0.99
+  jumpPower: 200
   hasGravity: 1
-  gravityScale: 1.5
+  gravityScale: 0.8
+  mass: 1
+  timeInAir: 0
   gChecker: {fileID: 44723550}
-  checkRadius: 0.2
+  checkRadius: 0.01
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -528,7 +532,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 1991245794}
   m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
@@ -541,9 +545,9 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!61 &1991245800
 BoxCollider2D:
@@ -594,6 +598,5 @@ BoxCollider2D:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1504176854}
   - {fileID: 1991245797}
   - {fileID: 730534559}

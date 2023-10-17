@@ -19,8 +19,13 @@ public class FakedPlatformerPhys : MonoBehaviour
     public float maxVelocity = 10f;
     public float maxDrag = 0.1f;
 
+    public float jumpPower = 1;
+
+    [Header("Gravity")]
     public bool hasGravity = true;
     public float gravityScale = 1f;
+    public float mass = 1;
+    public float timeInAir = 0;
 
     [Header("Ground Check")]
     public Transform gChecker;
@@ -55,14 +60,27 @@ public class FakedPlatformerPhys : MonoBehaviour
         }
 
         // dampen the velocity by drag every frame
-        currentVelocity = currentVelocity.normalized * (currentMaxVelocity *= maxDrag);
+        currentVelocity = currentVelocity.normalized * (currentMaxVelocity * maxDrag);
 
-        //if (!IsGrounded())
-        //{
-        //    Vector2 gravity = Vector2.down * gravityScale;
+        if (!IsGrounded())
+        {
+            timeInAir += Time.deltaTime * mass;
+            Vector2 gravity = Vector2.down * gravityScale;
 
-        //    currentVelocity += gravity * Time.deltaTime;
-        //}
+            currentVelocity += gravity * (mass + timeInAir);
+        }
+        else
+        {
+            if (Input.GetButtonDown("Jump"))
+            {
+                currentVelocity += Vector2.up * jumpPower;
+            }
+            else
+            {
+                timeInAir = 0;
+                currentVelocity.y = 0;
+            }
+        }
 
         Debug.DrawRay(transform.position, currentVelocity, Color.yellow);
         Debug.DrawRay(transform.position, currentAcceleration, Color.red);
@@ -74,16 +92,17 @@ public class FakedPlatformerPhys : MonoBehaviour
 
     bool IsGrounded()
     {
-        Debug.DrawRay(gChecker.position, Vector3.down * checkRadius, Color.red);
-
-        if (!Physics.Raycast(gChecker.position, Vector3.down, out RaycastHit hit, checkRadius, groundLayer)) return false;
-
-        Debug.Log("here");
-        if(hit.collider.gameObject.layer == groundLayer)
+        if (Physics2D.Raycast(gChecker.position, Vector2.down, checkRadius, groundLayer))
         {
-            Debug.DrawRay(gChecker.position, Vector3.down * checkRadius, Color.green);            
+            Debug.DrawRay(gChecker.position, Vector3.down * checkRadius, Color.green);
+            return true;
+        }
+        else
+        {
+            Debug.DrawRay(gChecker.position, Vector3.down * checkRadius, Color.red);
+            return false;
         }
 
-        return true;
+        
     }
 }
