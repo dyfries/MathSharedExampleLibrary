@@ -12,8 +12,8 @@ public class FakedPlatformerPhys : MonoBehaviour
 
     public float accelerationRate = 1f;
 
-    public Vector2 currentVelocity;
-    public Vector2 currentAcceleration;
+    private Vector2 currentVelocity;
+    private Vector2 currentAcceleration;
 
     public float maxAcceleration = 1f;
     public float maxVelocity = 10f;
@@ -25,7 +25,7 @@ public class FakedPlatformerPhys : MonoBehaviour
     public bool hasGravity = true;
     public float gravityScale = 1f;
     public float mass = 1;
-    public float timeInAir = 0;
+    private float timeInAir = 0;
 
     [Header("Ground Check")]
     public Transform gChecker;
