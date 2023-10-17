@@ -40,11 +40,11 @@ public class LerpWithGraph : MonoBehaviour
         if (isCurrentlyLerping)
         {
             currentTimer += Time.deltaTime;
-            scaledCurrentTimer = currentTimer / maxCurveTime;
+            scaledCurrentTimer = currentTimer / maxCurveTime; // Scaling the timer between 0 and maxTime
 
-            Debug.Log("time: " + curve.Evaluate(currentTimer));
             if (currentTimer < maxCurveTime)
             {
+                // Curve.Evaluate() gives the current value in the AnimationCurve at the scaled current time
                 transform.position = Vector3.Lerp(startPosition, endPosition, curve.Evaluate(scaledCurrentTimer));
             }
             else
