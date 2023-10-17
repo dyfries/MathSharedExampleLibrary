@@ -14,14 +14,6 @@ public class MathLerpOverTimeExample : MonoBehaviour
     private Vector3 startPosition;
     private Vector3 endPosition; // could do this different ways, I chose V3. 
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        /*
-
-         */
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -35,11 +27,15 @@ public class MathLerpOverTimeExample : MonoBehaviour
 
     public void LerpOverTime()
     {
-        isCurrentlyLerping = true; // let us know we started
-        startPosition = transform.position;
-        endPosition = transform.position + new Vector3(0, lerpDistance, 0);
+        if (!isCurrentlyLerping)
+        {
+            isCurrentlyLerping = true; // let us know we started
+            startPosition = transform.position;
+            endPosition = transform.position + new Vector3(0, lerpDistance, 0);
+        }
     }
-    public void LerpUpdate()
+
+    private void LerpUpdate()
     {
         if (isCurrentlyLerping)
         {
@@ -59,7 +55,6 @@ public class MathLerpOverTimeExample : MonoBehaviour
 
                 // iterate through
                 transform.position = Vector3.Lerp(startPosition, endPosition, rate);
-
             }
         }
     }
