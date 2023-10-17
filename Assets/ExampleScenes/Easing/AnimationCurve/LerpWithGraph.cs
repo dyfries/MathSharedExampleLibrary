@@ -43,7 +43,5 @@ public class LerpWithGraph : MonoBehaviour
                 transform.position = Vector3.Lerp(startPosition, endPosition, curve.Evaluate(currentTimer));
             }
         }
-
-      
     }
 }
