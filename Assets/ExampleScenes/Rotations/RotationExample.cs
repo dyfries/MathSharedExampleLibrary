@@ -24,7 +24,7 @@ public class RotationExample : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        startRotation = Quaternion.identity;
+        startRotation = this.transform.rotation;
     }
 
     // Update is called once per frame
@@ -75,6 +75,6 @@ public class RotationExample : MonoBehaviour
 
     private void QuaternionMultiplication()
     {
-        this.transform.rotation *= Quaternion.Euler(targetRotation);
+        this.transform.rotation = startRotation * Quaternion.Euler(targetRotation);
     }
 }
