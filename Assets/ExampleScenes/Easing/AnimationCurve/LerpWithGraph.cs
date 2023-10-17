@@ -12,6 +12,7 @@ public class LerpWithGraph : MonoBehaviour
     private Vector3 endPosition;
     private bool isCurrentlyLerping = false;
     private float currentTimer = 0.0f;
+    private float scaledCurrentTimer = 0.0f;
 
     public void LerpOverTime()
     {
@@ -39,11 +40,12 @@ public class LerpWithGraph : MonoBehaviour
         if (isCurrentlyLerping)
         {
             currentTimer += Time.deltaTime;
-          
+            scaledCurrentTimer = currentTimer / maxCurveTime;
+
             Debug.Log("time: " + curve.Evaluate(currentTimer));
             if (currentTimer < maxCurveTime)
             {
-                transform.position = Vector3.Lerp(startPosition, endPosition, curve.Evaluate(currentTimer));
+                transform.position = Vector3.Lerp(startPosition, endPosition, curve.Evaluate(scaledCurrentTimer));
             }
             else
             {

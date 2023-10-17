@@ -245,7 +245,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   lerpDistance: 5
-  maxCurveTime: 1
+  maxCurveTime: 5
 --- !u!1 &1215295318
 GameObject:
   m_ObjectHideFlags: 0
@@ -495,7 +495,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   lerpDistance: 5
-  maxCurveTime: 1
+  maxCurveTime: 5
 --- !u!212 &1501742855
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -686,7 +686,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   lerpDistance: 5
-  maxCurveTime: 1
+  maxCurveTime: 5
 --- !u!212 &1950440516
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -888,7 +888,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   lerpDistance: 5
-  maxCurveTime: 1
+  maxCurveTime: 5
 --- !u!212 &2111240179
 SpriteRenderer:
   m_ObjectHideFlags: 0
