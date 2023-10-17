@@ -41,13 +41,10 @@ public class MathLerpOverTimeExample : MonoBehaviour
     }
     public void LerpUpdate()
     {
-
         if (isCurrentlyLerping)
         {
-            // increment timer. 
             currentTimer += Time.deltaTime;
 
-            // are we done yet? 
             if (currentTimer > lerpTime)
             {
                 isCurrentlyLerping = false;
@@ -57,10 +54,8 @@ public class MathLerpOverTimeExample : MonoBehaviour
                 float proportionFinished = currentTimer / lerpTime; // scales the time range between 0 to 1
 
                 // sigmoid function : y = (k / 1 - euler's number ^ (-b * x))
-                // Mathf.Exp(1) is euler's number
-                float rate = (1 / (1 + Mathf.Pow(Mathf.Exp(1), (5.3f - (10 * proportionFinished)))));
-
-                Debug.Log(rate);
+                // Mathf.Exp(1) is euler's number (2.71...)
+                float rate = 1 / (1 + Mathf.Pow(Mathf.Exp(1), -10 * proportionFinished + 5));
 
                 // iterate through
                 transform.position = Vector3.Lerp(startPosition, endPosition, rate);

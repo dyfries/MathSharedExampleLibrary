@@ -220,7 +220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ff6d10ef88875544877e9ca276c0f99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lerpTime: 1
+  lerpTime: 8
   lerpDistance: 5
 --- !u!1 &1215295318
 GameObject:
