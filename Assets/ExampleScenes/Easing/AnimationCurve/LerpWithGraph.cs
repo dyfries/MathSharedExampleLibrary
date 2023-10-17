@@ -15,15 +15,18 @@ public class LerpWithGraph : MonoBehaviour
 
     public void LerpOverTime()
     {
-        isCurrentlyLerping = true; // let us know we started
-        startPosition = transform.position;
-        endPosition = transform.position + new Vector3(0, lerpDistance, 0);
+        if (!isCurrentlyLerping)
+        {
+            isCurrentlyLerping = true; // let us know we started
+            startPosition = transform.position;
+            endPosition = transform.position + new Vector3(0, lerpDistance, 0);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && !isCurrentlyLerping)
         {
             LerpOverTime();
         }
@@ -41,6 +44,10 @@ public class LerpWithGraph : MonoBehaviour
             if (currentTimer < maxCurveTime)
             {
                 transform.position = Vector3.Lerp(startPosition, endPosition, curve.Evaluate(currentTimer));
+            }
+            else
+            {
+                isCurrentlyLerping = false;
             }
         }
     }
